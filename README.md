@@ -110,11 +110,109 @@ Fork End, Seat Stays, BB Ball Bearings
 **Impact:** Reduce stockouts and volatility.
 
 ---
-
 # 🗂️ Data Architecture (SQL Backbone)
 
 All analysis is powered by curated SQL views created in SSMS.
 
 ## Database Context
+
 ```sql
 USE AdventureWorks2022;
+
+## Base Tables Used
+
+- `Production.Product`
+- `Production.ProductCategory`
+- `Production.ProductSubcategory`
+- `Sales.SalesOrderDetail`
+- `Sales.SalesOrderHeader`
+- `Production.WorkOrder`
+- `Production.BillOfMaterials`
+---
+
+# 🔹 Analytical Views
+
+## vw_ProductMaster
+
+**Decision Focus:** Product classification & lifecycle
+
+- LEFT JOIN preserves full product set  
+- Category hierarchy mapping  
+- Lifecycle tracking  
+
+---
+
+## vw_Sales_Fact
+
+**Decision Focus:** Revenue intelligence
+
+- INNER JOIN ensures transactional integrity  
+- Enables Year / Quarter / Month slicing  
+- Forms revenue concentration analysis layer  
+
+---
+
+## vw_Production_WorkOrders
+
+**Decision Focus:** Scrap & efficiency
+
+- OrderQty vs StockedQty  
+- ScrappedQty tracking  
+- Batch-level production tracking  
+
+---
+
+## vw_ProductComplexity
+
+**Decision Focus:** Operational intensity
+
+- Component count per product  
+- Maximum BOM depth  
+- Identifies operational complexity drivers  
+
+---
+
+# 📁 Repository Structure
+
+- `/sql/` → SQL scripts defining analytical views  
+- `/views_results/` → Exported view outputs  
+- `/screenshots/` → Triptych visuals  
+- `AdventureWorks2022_Dataset.xlsx`  
+- `README.md`
+
+---
+
+# 📦 Data Source & Reproducibility
+
+This project uses the **AdventureWorks2022** sample database provided by Microsoft.
+
+The `.bak` file is not redistributed to respect licensing and to avoid unnecessary repository size expansion.
+
+**Official installation guide:**
+
+https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver17&tabs=ssms
+
+---
+
+# 🔧 How to Reproduce the Analysis
+
+1. Download `AdventureWorks2022.bak` from the official Microsoft link above  
+2. Open SQL Server Management Studio (SSMS)  
+3. Right-click **Databases → Restore Database**  
+4. Select **Device → Choose the downloaded `.bak` file**  
+5. Restore the database as `AdventureWorks2022`  
+6. Execute the SQL scripts located in: /sql/
+
+This recreates the analytical views used in the reports and Power BI modeling layer.
+
+---
+
+# 🎯 Strategic Outcome
+
+**Concentrate revenue.**  
+**Reduce complexity.**  
+**Control waste.**  
+**Convert operational noise into decision leverage.** 
+
+
+
