@@ -113,11 +113,9 @@ Fork End, Seat Stays, BB Ball Bearings
 # 🗂️ Data Architecture (SQL Backbone)
 
 All analysis is powered by curated SQL views created in SSMS.
-
-## Database Context
-
 ```sql
 USE AdventureWorks2022;
+```
 
 ## Base Tables Used
 
@@ -128,6 +126,7 @@ USE AdventureWorks2022;
 - `Sales.SalesOrderHeader`
 - `Production.WorkOrder`
 - `Production.BillOfMaterials`
+
 ---
 
 # 🔹 Analytical Views
@@ -212,7 +211,4 @@ This recreates the analytical views used in the reports and Power BI modeling la
 **Concentrate revenue.**  
 **Reduce complexity.**  
 **Control waste.**  
-**Convert operational noise into decision leverage.** 
-
-
-
+**Convert operational noise into decision leverage.**
